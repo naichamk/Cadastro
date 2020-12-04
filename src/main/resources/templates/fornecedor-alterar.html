@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="ISO-8859-1" />
-<title>Clientes</title>
+<title>Fornecedor</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -14,7 +14,7 @@
 
 	<header>
 		<nav class="navbar navbar-light bg-light">
-			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Clientes</span>
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Fornecedores</span>
 		</nav>
 	</header>
 
@@ -25,29 +25,29 @@
 				<ol class="breadcrumb"
 					style="background-color: white; padding-left: 0px;">
 					<li class="breadcrumb-item" aria-current="page"><a href="/" >Home</a></li>
-					<li class="breadcrumb-item" aria-current="page"><a href="/clientes" >Clientes</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Novo Cliente</li>
+					<li class="breadcrumb-item" aria-current="page"><a href="/fornecedores" >Fornecedores</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Alterar Fornecedor</li>
 				</ol>
 			</nav>
 
 		  <div>
             <th:block th:include="mensagemValidacao"></th:block>
-            <form method="post">
+            <form th:action="@{/fornecedores/alterar/{id}(id=${fornecedor.id})}" th:object="${fornecedor}" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="nome" placeholder="nome *">
+                    <input th:field="${fornecedor.nomeEmpresa}" type="text" class="form-control" name="nomeEmpresa" placeholder="nome da empresa *">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="cpf" placeholder="cpf *">
+                    <input th:field="${fornecedor.endereco}" type="text" class="form-control" name="endereco" placeholder="endereço *">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control" name="telefone" placeholder="telefone *">
+                    <input th:field="${fornecedor.telefone}" type="text" class="form-control" name="telefone" placeholder="telefone *">
                 </div>
 
                 <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Cadastrar</button>
-                <a href="/clientes" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">alterar</button>
+                <a href="/fornecedores" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
             </form>
         </div>
 
