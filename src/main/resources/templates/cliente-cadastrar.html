@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+
+<head>
+<meta charset="ISO-8859-1" />
+<title>Clientes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Clientes</span>
+		</nav>
+	</header>
+
+	<section>
+		<div class="container" style="width: 60%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb"
+					style="background-color: white; padding-left: 0px;">
+					<li class="breadcrumb-item" aria-current="page"><a href="/posts" >Clientes</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Novo Cliente</li>
+				</ol>
+			</nav>
+
+		  <div>
+            <th:block th:include="mensagemValidacao"></th:block>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="nome" placeholder="nome *">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="cpf" placeholder="cpf *">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="telefone" placeholder="telefone *">
+                </div>
+
+                <small class="form-text text-muted">(*) Campos obrigatórios</small>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Cadastrar</button>
+                <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+            </form>
+        </div>
+
+		</div>
+	</section>
+
+</body>
+</html>

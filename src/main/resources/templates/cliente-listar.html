@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<title>CodeBlog</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+	integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+	crossorigin="anonymous">
+</head>
+
+<body>
+
+	<header>
+		<nav class="navbar navbar-light bg-light">
+			<span class="navbar-brand mb-0 h1" style="font-weight: bold;">Cadastro</span>
+		</nav>
+	</header>
+
+	<section>
+		<div class="container" style="width: 60%; padding-bottom: 30px;">
+
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb"
+					style="background-color: white; padding-left: 0px;">
+					<li class="breadcrumb-item"><a href="/">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Clientes</li>
+				</ol>
+			</nav>
+
+			<table class="table table-hover table-striped shadow-sm">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Nome</th>
+						<th scope="col">CPF</th>
+						<th scope="col">Telefone</th>
+						<th scope="col"><a class="btn btn-success btn-sm ml-3"
+							th:href="@{/clientes/cadastrar}"> 
+							<i class="fas fa-user-plus m-1"></i></a></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cliente : ${clientes}">
+						<th scope="row" th:text="${cliente.id}"></th>
+						<td th:text="${cliente.nome}"></td>
+						<td th:text="${cliente.cpf}"></td>
+						<td th:text="${cliente.telefone}"></td>
+						<td class="d-flex justify-content-between"><a
+							class="btn btn-info btn-sm ml-3"
+							th:href="@{/clientes/alterar/{id}(id=${cliente.id})}"><i
+								class="fas fa-edit m-1"></i></a>
+							<form method="POST" action="#"
+								th:action="@{/clientes/deletar/{id}(id=${cliente.id})}" th:object="${cliente}">
+								<button type="submit" class="btn btn-danger btn-sm mr-3">
+									<i class="fas fa-trash-alt m-1"></i>
+								</button>
+							</form></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</body>
+</html>
